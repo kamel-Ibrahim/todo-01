@@ -3,7 +3,7 @@ import { TaskContext } from '../context/TaskContext';
 import TaskCard from '../components/TaskCard';
 
 const PastTasks = () => {
-  const { pastTasks } = useContext(TaskContext);
+  const { pastTasks } = useContext(TaskContext);  // Use pastTasks from context
 
   return (
     <div className="past-tasks-container">
@@ -11,7 +11,9 @@ const PastTasks = () => {
       {pastTasks.length === 0 ? (
         <p>No past tasks found.</p>
       ) : (
-        pastTasks.map(task => <TaskCard key={task.id} task={task} />)
+        pastTasks.map((task) => (
+          <TaskCard key={task.id} task={task} />  
+        ))
       )}
     </div>
   );

@@ -1,0 +1,72 @@
+/* src/styles/TaskForm.css */
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding: 20px;
+  /* background-color: #ffffff; */
+  border-radius: 10px;
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+  width: 100%;
+  max-width: 500px; /* Max width for responsiveness */
+  margin-bottom: 40px;
+}
+
+.task-input {
+  padding: 15px;
+  width: 100%;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.task-input:focus {
+  border-color: #17a673; /* Change border color on focus */
+  outline: none;
+}
+
+.task-submit {
+  background-color: #0e5e44;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  max-width: 500px; /* Max width for the button */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.task-submit:hover {
+  background-color: #17a673;
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+.task-submit:active {
+  background-color: #0e5e44;
+  transform: translateY(1px); /* Pressed effect */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .task-form {
+    width: 90%;
+    margin-top: 10px;
+  }
+
+  .task-input {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .task-submit {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}

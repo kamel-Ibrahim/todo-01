@@ -11,9 +11,9 @@ export const TaskProvider = ({ children }) => {
   };
 
   const removeTask = (taskId) => {
-    const taskToRemove = tasks.find(task => task.id === taskId);
-    setTasks(tasks.filter(task => task.id !== taskId));
-    setPastTasks([...pastTasks, taskToRemove]);
+    const taskToRemove = tasks.find((task) => task.id === taskId);
+    setTasks(tasks.filter((task) => task.id !== taskId));
+    setPastTasks([...pastTasks, taskToRemove]); // Add to past tasks
   };
 
   return (
