@@ -1,0 +1,34 @@
+:root {
+  --cedar: #0E5E44;
+  --gold: #C8A74A;
+  --medblue: #2A4E6E;
+  --sand: #F3F0E7;
+  --slate: #334155;
+  --mint: #17A673;
+  --pome: #C0392B;
+  --saffron: #E3B341;
+}
+
+body {
+  background-color: var(--sand);
+  color: var(--slate);
+}
+
+.button {
+  background-color: var(--cedar);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--mint);
+}
+
+.task-item {
+  background-color: var(--gold);
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+}

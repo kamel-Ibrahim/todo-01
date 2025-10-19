@@ -1,0 +1,57 @@
+/* src/App.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f3f0e7;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.task-input {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.task-submit {
+  background-color: #0e5e44;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.task-submit:hover {
+  background-color: #17a673;
+}
+
+.task-card {
+  background-color: #c8a74a;
+  padding: 20px;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.remove-task {
+  background-color: #c0392b;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.remove-task:hover {
+  background-color: #e3b341;
+}
