@@ -4,17 +4,20 @@ export const TaskContext = createContext();
 
 export const TaskProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
+  const [pastTasks, setPastTasks] = useState([]);
 
   const addTask = (task) => {
     setTasks([...tasks, task]);
   };
 
   const removeTask = (taskId) => {
-    setTasks(tasks.filter((task) => task.id !== taskId));
+    const taskToRemove = tasks.find(task => task.id === taskId);
+    setTasks(tasks.filter(task => task.id !== taskId));
+    setPastTasks([...pastTasks, taskToRemove]);
   };
 
   return (
-    <TaskContext.Provider value={{ tasks, addTask, removeTask }}>
+    <TaskContext.Provider value={{ tasks, pastTasks, addTask, removeTask }}>
       {children}
     </TaskContext.Provider>
   );
