@@ -1,28 +1,23 @@
-/* src/components/TaskForm.css */
+/* src/styles/TaskForm.css */
 .task-form {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
   margin-bottom: 20px;
 }
 
 .task-input {
   padding: 10px;
-  margin-bottom: 10px;
+  width: 70%;
   border-radius: 5px;
-  width: 100%;
-  max-width: 500px;
   border: 1px solid #ccc;
 }
 
 .task-submit {
+  padding: 10px 20px;
   background-color: #0e5e44;
   color: white;
-  padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  width: 100%;
-  max-width: 500px;
 }
 
 .task-submit:hover {
