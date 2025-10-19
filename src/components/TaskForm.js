@@ -1,20 +1,13 @@
 import React, { useState, useContext } from 'react';
-import { TaskContext } from '../context/TaskContext'; // Ensure TaskContext is correctly imported
+import { TaskContext } from '../context/TaskContext';
 
 const TaskForm = () => {
   const [taskText, setTaskText] = useState('');
-  const { addTask } = useContext(TaskContext); // Destructure addTask properly
-
-  // Check if addTask is defined before using it
-  if (!addTask) {
-    return <div>Error: addTask is not available!</div>;
-  }
+  const { addTask } = useContext(TaskContext); // Access the addTask function from context
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!taskText) return;
-
-    // Add task with a proper ID and text
+    if (!taskText.trim()) return; // Don't add empty tasks
     addTask({ id: Date.now(), text: taskText });
     setTaskText('');
   };
