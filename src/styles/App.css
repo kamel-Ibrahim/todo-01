@@ -1,0 +1,33 @@
+/* src/styles/App.css */
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: #f3f0e7;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1, h2 {
+  color: #0e5e44;
+}
+
+.main-content {
+  padding: 20px;
+  margin-top: 80px; /* For Navbar space */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .task-form {
+    flex-direction: column;
+  }
+
+  .task-submit {
+    width: 100%;
+  }
+}
