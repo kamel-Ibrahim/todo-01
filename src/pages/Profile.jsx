@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import Button from '../components/Button';
 export default function Profile() {
   const [user, setUser] = useState({
     name: 'Tala',
@@ -9,18 +9,23 @@ export default function Profile() {
   const [emailError, setEmailError] = useState('');
 
   const handleSave = () => {
-    // Validate email 
+    // Validate email before saving
     if (!validateEmail(user.email)) {
       setEmailError('Please enter a valid email address');
       return;
     }
+
     setEmailError('');
     setIsEditing(false);
     alert('Profile updated!');
   };
 
+  const handleDelete = () => {
+    alert('Profile deleted!');
+  };
+
   const validateEmail = (email) => {
-    // Simple email validation using regex
+    // Simple email validation regex
     const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return re.test(email);
   };
@@ -44,13 +49,14 @@ export default function Profile() {
             placeholder="Enter your email"
           />
           {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
-          <button onClick={handleSave}>Save</button>
+          <Button label="Save" onClick={handleSave} type="primary" />
         </div>
       ) : (
         <div>
           <p><strong>Name:</strong> {user.name}</p>
           <p><strong>Email:</strong> {user.email}</p>
-          <button onClick={() => setIsEditing(true)}>Edit</button>
+          <Button label="Edit" onClick={() => setIsEditing(true)} type="primary" />
+          <Button label="Delete" onClick={handleDelete} type="delete" />
         </div>
       )}
     </div>
