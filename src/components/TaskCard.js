@@ -6,7 +6,6 @@ const TaskCard = ({ task, removeTask }) => {
   return (
     <div className="task-card">
       <p>{task.text}</p>
-      {/* Only show the delete button if removeTask is passed as a prop */}
       {removeTask && (
         <button onClick={() => removeTask(task.id)} className="remove-task">
           Delete
