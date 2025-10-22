@@ -1,27 +1,33 @@
 import React from 'react';
 
-// Button component that takes label, onClick handler, and style type
 const Button = ({ label, onClick, type = 'primary' }) => {
+  const pomeColor = getComputedStyle(document.documentElement).getPropertyValue('--pome').trim();
+  
+
+
+  const mintColor = getComputedStyle(document.documentElement).getPropertyValue('--mint').trim();
+
+
   const buttonStyles = {
     primary: {
-      backgroundColor: '#4CAF50', // Green for Save
+      backgroundColor: mintColor || '#4CAF50',  
       color: 'white',
       padding: '10px 20px',
       border: 'none',
       borderRadius: '5px',
       cursor: 'pointer',
       fontSize: '16px',
-      margin: '10px 0',
+      margin: '10px 10px',
     },
     delete: {
-      backgroundColor: '#f44336', // Red for Delete
+      backgroundColor: pomeColor || '#f44336',  
       color: 'white',
       padding: '10px 20px',
       border: 'none',
       borderRadius: '5px',
       cursor: 'pointer',
       fontSize: '16px',
-      margin: '10px 0',
+      margin: '10px 10px',
     },
   };
 

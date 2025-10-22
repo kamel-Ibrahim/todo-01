@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import Button from '../components/Button';
+import Button from '../components/Button'; // Import the Button component
+
 export default function Profile() {
   const [user, setUser] = useState({
     name: 'Tala',
