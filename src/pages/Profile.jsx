@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Button from '../components/Button'; // Import the Button component
+import '../styles/Profile.css' 
 
 export default function Profile() {
   const [user, setUser] = useState({
@@ -42,12 +43,14 @@ export default function Profile() {
             value={user.name}
             onChange={(e) => setUser({ ...user, name: e.target.value })}
             placeholder="Enter your name"
+            className="input-field"  // Apply class for styling
           />
           <input
             type="email"
             value={user.email}
             onChange={(e) => setUser({ ...user, email: e.target.value })}
             placeholder="Enter your email"
+            className="input-field"  // Apply class for styling
           />
           {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
           <Button label="Save" onClick={handleSave} type="primary" />
