@@ -1,12 +1,13 @@
 /* src/components/Footer.css */
 .footer {
-  background-color: #334155;
-  color: white;
+  background-color: #001e1d;          /* stroke (deep) */
+  color: #fffffe;                      /* headline on dark */
   text-align: center;
   padding: 10px;
-  margin-top: 40px; /* To push the footer away from the content */
+  margin-top: 40px;                    /* push footer away */
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
+  border-top: 1px solid rgba(255,255,255,.12);
 }
