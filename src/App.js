@@ -10,13 +10,15 @@ import Logout from './pages/Logout';
 import Profile from './pages/Profile';
 import PastTasks from './pages/PastTasks';
 import { TaskProvider } from './context/TaskContext';
+import { CategoryProvider } from './context/CategoryContext';
 import { AuthProvider } from './context/AuthContext';   // added by tala
 import './styles/App.css';
 
 function App() {
   return (
-    <TaskProvider>
-      <AuthProvider>   {/*new wrapper for authentication(tala) */}
+    <CategoryProvider>
+        <TaskProvider>
+          <AuthProvider>   {/*new wrapper for authentication(tala) */}
         <Router>
           <Navbar />
           <div className="main-content">
@@ -33,7 +35,8 @@ function App() {
           <Footer />
         </Router>
       </AuthProvider>
-    </TaskProvider>
+        </TaskProvider>
+      </CategoryProvider>
   );
 }
 

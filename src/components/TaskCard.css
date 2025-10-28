@@ -26,3 +26,11 @@
   filter: brightness(.95);
   transform: translateY(-1px);
 }
+
+/* Person 3 additions */
+.task-card.done .task-text { text-decoration: line-through; opacity: .7; }
+.task-main { display:flex; align-items:center; gap:12px; }
+.task-category-badge { margin-left:auto; font-size:12px; padding:4px 8px; border-radius:999px; background: var(--accent); color: var(--text); }
+.task-actions { display:flex; gap:8px; margin-top:8px; }
+.btn.danger { background: var(--danger); color:#fff; }
+.task-edit-input { flex:1; padding:8px 10px; border-radius:8px; border:1px solid rgba(0,0,0,.1); }
