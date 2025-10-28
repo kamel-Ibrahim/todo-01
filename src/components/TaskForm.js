@@ -1,20 +1,23 @@
 import React, { useState, useContext } from 'react';
 import { TaskContext } from '../context/TaskContext';
-import './TaskForm.css'; // Import styles for TaskForm
+import CategorySelect from './CatagorySelect'
+import '../styles/TaskForm.css';
 
 const TaskForm = () => {
   const [taskText, setTaskText] = useState('');
-  const { addTask } = useContext(TaskContext); // Access the addTask function from context
+  const [category, setCategory] = useState('General');
+  const { addTask } = useContext(TaskContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!taskText.trim()) return; // Don't add empty tasks
-    addTask({ id: Date.now(), text: taskText });
+    if (!taskText.trim()) return;
+    addTask({ text: taskText.trim(), category });
     setTaskText('');
+    setCategory('General');
   };
 
   return (
-    <form onSubmit={handleSubmit} className="task-form">
+    <form className="task-form" onSubmit={handleSubmit}>
       <input
         type="text"
         value={taskText}
@@ -22,9 +25,8 @@ const TaskForm = () => {
         placeholder="Add a new task"
         className="task-input"
       />
-      <button type="submit" className="task-submit">
-        Add Task
-      </button>
+      <CategorySelect value={category} onChange={setCategory} className="task-category" />
+      <button type="submit" className="task-submit">Add Task</button>
     </form>
   );
 };
