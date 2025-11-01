@@ -48,7 +48,7 @@ export default function Login() {
       login(email.trim(), password);
       nav("/");
     } catch (err) {
-      alert(err.message || "Login failed. Please try again.");
+      alert(err.message || "Login failed.Please make sure your email and password are correct.");
     }
   };
 
@@ -97,11 +97,7 @@ export default function Login() {
           />
           {passwordError ? <p className="error">{passwordError}</p> : null}
 
-          {derivedName && (
-            <p className="hint">
-              Hello, <strong>{derivedName}</strong>
-            </p>
-          )}
+      
 
           <button className="btn" type="submit" disabled={disabled}>
             Log In
