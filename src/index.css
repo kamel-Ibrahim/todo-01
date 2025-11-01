@@ -1,34 +1,46 @@
 :root {
-  --cedar: #0E5E44;
-  --gold: #C8A74A;
-  --medblue: #2A4E6E;
-  --sand: #F3F0E7;
-  --slate: #334155;
-  --mint: #17A673;
-  --pome: #C0392B;
-  --saffron: #E3B341;
+  --bg: #004643;          /* background */
+  --headline: #fffffe;     /* main white text */
+  --text: #abd1c6;         /* muted light text */
+  --surface: #e8e4e6;      /* card/surface color */
+  --stroke: #001e1d;       /* borders */
+  --primary: #f9bc60;      /* buttons, highlights */
+  --danger: #e16162;       /* delete/danger */
 }
 
+/* Overall page */
 body {
-  background-color: var(--sand);
-  color: var(--slate);
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
+/* Button */
 .button {
-  background-color: var(--cedar);
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
+  background-color: var(--primary);
+  color: var(--stroke);
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .button:hover {
-  background-color: var(--mint);
+  background-color: #e8aa47; /* darker gold */
+  transform: translateY(-1px);
 }
 
+/* Task item cards */
 .task-item {
-  background-color: var(--gold);
-  padding: 10px;
-  margin: 5px 0;
-  border-radius: 5px;
+  background-color: var(--surface);
+  color: var(--stroke);
+  border: 1.5px solid var(--stroke);
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }

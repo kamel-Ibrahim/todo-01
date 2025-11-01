@@ -7,11 +7,10 @@
   align-items: center;
   margin-top: 20px;
   padding: 20px;
-  /* background-color: #ffffff; */
+  background-color: transparent;      /* let page bg show */
   border-radius: 10px;
-  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
   width: 100%;
-  max-width: 500px; /* Max width for responsiveness */
+  max-width: 500px;
   margin-bottom: 40px;
 }
 
@@ -20,37 +19,44 @@
   width: 100%;
   margin-bottom: 15px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 2px solid #001e1d;          /* stroke */
+  background: #073b36;                /* dark teal field */
+  color: #fffffe;                      /* input text */
   font-size: 16px;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-input::placeholder {
+  color: #7fb2a7;
 }
 
 .task-input:focus {
-  border-color: #17a673; /* Change border color on focus */
+  border-color: #f9bc60;              /* primary */
   outline: none;
+  box-shadow: 0 0 0 4px rgba(249,188,96,.22);
 }
 
 .task-submit {
-  background-color: #0e5e44;
-  color: white;
+  background-color: #f9bc60;          /* primary */
+  color: #001e1d;                      /* dark text on gold */
   padding: 12px 25px;
   border-radius: 8px;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
   width: 100%;
-  max-width: 500px; /* Max width for the button */
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  max-width: 500px;
+  border: 2px solid #f9bc60;
+  transition: filter 0.2s ease, transform 0.1s ease;
 }
 
 .task-submit:hover {
-  background-color: #17a673;
-  transform: translateY(-2px); /* Slight lift effect */
+  filter: brightness(.95);
+  transform: translateY(-1px);
 }
 
 .task-submit:active {
-  background-color: #0e5e44;
-  transform: translateY(1px); /* Pressed effect */
+  transform: translateY(1px);
 }
 
 /* Responsive Design */

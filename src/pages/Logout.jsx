@@ -1,21 +1,23 @@
-import React, { useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+// src/pages/Logout.jsx
+import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 export default function Logout() {
   const { logout } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const nav = useNavigate();
 
   useEffect(() => {
-    logout();
-    // send users back to Register after logging out
-    navigate('/register', { replace: true });
-  }, [logout, navigate]);
+    // Call your logout function from AuthContext
+    logout?.();
+    // Redirect to register (or login) after logout
+    nav("/register", { replace: true });
+  }, [logout, nav]);
 
   return (
-    <div className="page-wrap">
-      <h1>Logging out…</h1>
-      <p>You’ll be redirected shortly.</p>
+    <div style={{ padding: 16, textAlign: "center" }}>
+      <h2>Logging out...</h2>
+      <p>We’re safely signing you out of your account.</p>
     </div>
   );
 }

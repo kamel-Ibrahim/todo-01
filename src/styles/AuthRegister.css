@@ -5,22 +5,24 @@
   box-sizing: border-box;
 }
 
- .main-content {
+.main-content {
   padding: 0 !important;
   margin-top: 0 !important;
 }
 
 /* LAYOUT --------------------------------------------------------- */
+/* Full-screen, single centered card (no side columns) */
 .auth-layout {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
+  min-height: 100vh;           /* full height */
+  width: 100%;
+  overflow-y: auto;            /* allow scroll if content grows */
   background: radial-gradient(circle at 50% 50%, #00594f 0%, #003f3b 100%);
   position: relative;
   isolation: isolate;
+  padding: 2rem;               /* breathing room on desktop */
 }
 
 /* Elegant Apple-style soft gradient light */
@@ -37,38 +39,26 @@
   z-index: 0;
 }
 
-/* CARD CONTAINER ------------------------------------------------- */
-.auth-left {
+/* CARD ----------------------------------------------------------- */
+.auth-card {
   position: relative;
   z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: min(90%, 440px);
-}
-
-.auth-card {
   background: rgba(255, 255, 255, 0.07);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 24px;
-  padding: 3rem 2.5rem;
+  padding: clamp(2rem, 4vw, 3rem);
+  width: 100%;
+  max-width: 900px;            /* desktop-friendly width */
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(20px) saturate(160%);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
   text-align: center;
-  width: 100%;
   animation: cardFade 0.9s ease-out;
 }
 
 @keyframes cardFade {
-  from {
-    opacity: 0;
-    transform: translateY(30px) scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+  from { opacity: 0; transform: translateY(30px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 /* LOGO DOT ------------------------------------------------------- */
@@ -85,7 +75,7 @@
 .welcome {
   color: #fffffe;
   font-weight: 700;
-  font-size: clamp(2rem, 3vw, 2.4rem);
+  font-size: clamp(2rem, 3vw, 2.6rem);
   letter-spacing: -0.4px;
 }
 
@@ -204,21 +194,18 @@ label {
 /* RESPONSIVENESS ------------------------------------------------- */
 @media (max-width: 600px) {
   .auth-card {
-    padding: 2.5rem 1.75rem;
+    padding: 2.2rem 1.4rem;
     border-radius: 20px;
+    max-width: 100%;
   }
-
-  .welcome {
-    font-size: 1.9rem;
-  }
-
-  .sub {
-    font-size: 0.95rem;
-  }
+  .welcome { font-size: 1.9rem; }
+  .sub { font-size: 0.95rem; }
 }
 
+/* Remove any old caps that made it look “phone-sized” */
 @media (min-width: 1200px) {
-  .auth-card {
-    max-width: 420px;
-  }
+  .auth-card { max-width: 900px; } /* keep it wide on desktop */
 }
+
+/* Cleanup: if any old .auth-left/.auth-right rules exist, ignore them */
+.auth-left, .auth-right { display: none !important; }
