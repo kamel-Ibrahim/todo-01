@@ -1,22 +1,22 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
-import Home from './pages/Home';
-import TaskList from './pages/TaskList';
-import Register from './pages/Register';
-import Login from './pages/Login';
-import Logout from './pages/Logout';
-import Profile from './pages/Profile';
-import PastTasks from './pages/PastTasks';
+import Home from "./pages/Home";
+import TaskList from "./pages/TaskList";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import Profile from "./pages/Profile";
+import PastTasks from "./pages/PastTasks";
+import Logout from "./pages/Logout"; // <-- added
 
-import { TaskProvider } from './context/TaskContext';
-import { CategoryProvider } from './context/CategoryContext';
-import { AuthProvider, AuthContext } from './context/AuthContext';
+import { TaskProvider } from "./context/TaskContext";
+import { CategoryProvider } from "./context/CategoryContext";
+import { AuthProvider, AuthContext } from "./context/AuthContext";
 
-import './styles/App.css';
+import "./styles/App.css";
 
 /* -------- Route Guards -------- */
 function ProtectedRoute({ children }) {
