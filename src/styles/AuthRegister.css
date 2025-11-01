@@ -54,16 +54,6 @@
   -webkit-backdrop-filter: blur(20px) saturate(160%);
   text-align: center;
   animation: cardFade 0.9s ease-out;
-
-  /* --- important for tiny screens --- */
-  box-sizing: border-box;
-  overflow: hidden;            /* nothing should ever spill outside */
-}
-
-/* Let all children shrink inside the card and never exceed card width */
-.auth-card * {
-  min-width: 0;
-  max-width: 100%;
 }
 
 @keyframes cardFade {
@@ -71,7 +61,7 @@
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* LOGO (replace with logo later)------ */
+/* LOGO DOT ------------------------------------------------------- */
 .app-mark {
   width: 64px;
   height: 64px;
@@ -81,17 +71,12 @@
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
 }
 
-/* HEADINGS -------- */
+/* HEADINGS ------------------------------------------------------- */
 .welcome {
   color: #fffffe;
   font-weight: 700;
   font-size: clamp(2rem, 3vw, 2.6rem);
   letter-spacing: -0.4px;
-
-  /* safety for long app names on small phones */
-  word-break: break-word;
-  overflow-wrap: anywhere;
-  hyphens: auto;
 }
 
 .brand {
@@ -217,22 +202,8 @@ label {
   .sub { font-size: 0.95rem; }
 }
 
-/* Phone tweaks */
-@media (max-width: 480px) {
-  .auth-layout { padding: 1rem; }                  /* less outer padding */
-  .auth-card { max-width: 100%; padding: 1.5rem; border-radius: 16px; }
-  .app-mark { width: 56px; height: 56px; }         /* smaller logo */
-  .welcome { font-size: clamp(1.3rem, 7vw, 2rem); line-height: 1.15; }
-  .sub { font-size: 0.95rem; }
-  .form { gap: 1rem; }
-  label { font-size: 0.9rem; }
-  .input { padding: 0.8rem 0.9rem; width: 100%; }
-  .btn { padding: 0.9rem; }
-  .error, .hint { font-size: 0.85rem; }
+/* Remove any old caps that made it look “phone-sized” */
+@media (min-width: 1200px) {
+  .auth-card { max-width: 900px; } /* keep it wide on desktop */
 }
-
-/* Ultra-small devices (e.g., 320px wide) */
-@media (max-width: 360px) {
-  .welcome { font-size: 1.2rem; }
-  .auth-card { padding: 1.2rem; }
-}
+.auth-left, .auth-right { display: none !important; }

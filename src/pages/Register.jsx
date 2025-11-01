@@ -57,7 +57,7 @@ export default function Register() {
       nav("/");
     } catch (err) {
       console.error(err);
-      alert("Registration failed. Please try again.");
+      alert("This account already exists");
     }
   };
 
@@ -105,12 +105,7 @@ export default function Register() {
           />
           {passwordError ? <p className="error">{passwordError}</p> : null}
 
-          {derivedName && (
-            <p className="hint">
-              Username detected: <strong>{derivedName}</strong>
-            </p>
-            
-          )}
+        
 
           <button className="btn" type="submit" disabled={disabled}>
             Register
