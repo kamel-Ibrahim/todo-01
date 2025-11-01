@@ -5,26 +5,64 @@ export const AuthContext = createContext(null);
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
 
-  // Load user from localStorage when app starts
+  //Loads the current logged-in user when app starts
   useEffect(() => {
-    const raw = localStorage.getItem("user");
-    if (raw) setUser(JSON.parse(raw));
+    const current = localStorage.getItem("currentUser");
+    if (current) {
+      const users = JSON.parse(localStorage.getItem("users")) || {};
+      setUser(users[current] || null);
+    }
   }, []);
 
-  // Save to localStorage whenever user changes
-  useEffect(() => {
-    if (user) localStorage.setItem("user", JSON.stringify(user));
-    else localStorage.removeItem("user");
-  }, [user]);
+  //registers new LAU user
+  const register = ({ name, email, password }) => {
+    const users = JSON.parse(localStorage.getItem("users")) || {};
 
-  // Functions for register, login, logout, and profile update
-  const register = (payload) => setUser(payload);
-  const login = (email) => setUser((u) => (u ? u : { name: "User", email }));
-  const logout = () => setUser(null);
-  const updateProfile = (updates) => setUser((u) => ({ ...u, ...updates }));
+    if (users[email]) throw new Error("User already exists.");
+
+    users[email] = {
+      name,
+      email,
+      password,
+      tasks: [] // placeholder for your teammates’ work later
+    };
+
+    localStorage.setItem("users", JSON.stringify(users));
+    localStorage.setItem("currentUser", email);
+    setUser(users[email]);
+  };
+
+  //Logs in existing user
+  const login = (email, password) => {
+    const users = JSON.parse(localStorage.getItem("users")) || {};
+
+    if (!users[email]) throw new Error("User not found.");
+    if (users[email].password !== password)
+      throw new Error("Incorrect password.");
+
+    localStorage.setItem("currentUser", email);
+    setUser(users[email]);
+  };
+
+  //Logs out and keep data saved
+  const logout = () => {
+    localStorage.removeItem("currentUser");
+    setUser(null);
+  };
+
+  //Updates user profile (for Profile page later)
+  const updateProfile = (updates) => {
+    if (!user) return;
+    const users = JSON.parse(localStorage.getItem("users")) || {};
+    users[user.email] = { ...users[user.email], ...updates };
+    localStorage.setItem("users", JSON.stringify(users));
+    setUser(users[user.email]);
+  };
 
   return (
-    <AuthContext.Provider value={{ user, register, login, logout, updateProfile }}>
+    <AuthContext.Provider
+      value={{ user, register, login, logout, updateProfile }}
+    >
       {children}
     </AuthContext.Provider>
   );
