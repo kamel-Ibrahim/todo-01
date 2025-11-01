@@ -68,7 +68,9 @@ export default function Register() {
         <h1 className="welcome">
           Welcome to <span className="brand">YourApp</span>
         </h1>
-        <p className="sub">Create your account with your LAU credentials.</p>
+        {/* Placeholder to keep same spacing as before */}
+        <p className="sub" style={{ visibility: "hidden" }}>
+           placeholder</p>
 
         <form className="form" onSubmit={onSubmit} noValidate>
           <label htmlFor="email">LAU Email</label>
@@ -76,7 +78,7 @@ export default function Register() {
             id="email"
             className={`input ${emailError ? "invalid" : ""}`}
             type="email"
-            placeholder="LAU email"
+            placeholder="Enter your LAU email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             onBlur={() => {
@@ -94,7 +96,7 @@ export default function Register() {
             id="password"
             className={`input ${passwordError ? "invalid" : ""}`}
             type="password"
-            placeholder="LAU password"
+            placeholder="Enter your LAU password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             onBlur={() => setTouched((t) => ({ ...t, password: true }))}
@@ -107,6 +109,7 @@ export default function Register() {
             <p className="hint">
               Username detected: <strong>{derivedName}</strong>
             </p>
+            
           )}
 
           <button className="btn" type="submit" disabled={disabled}>
