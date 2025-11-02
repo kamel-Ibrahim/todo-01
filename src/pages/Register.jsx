@@ -66,9 +66,9 @@ export default function Register() {
       <div className="auth-card">
         <div className="app-mark" aria-hidden />
         <h1 className="welcome">
-          Welcome to <span className="brand">YourApp</span>
+          <span className="brand">Create </span> an account
         </h1>
-        {/* Placeholder to keep same spacing as before */}
+        {/* Placeholder for spacing*/}
         <p className="sub" style={{ visibility: "hidden" }}>
            placeholder</p>
 
