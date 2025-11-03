@@ -1,4 +1,3 @@
-/* RESET & BASE -------------------------------------------------- */
 * {
   margin: 0;
   padding: 0;
@@ -10,22 +9,19 @@
   margin-top: 0 !important;
 }
 
-/* LAYOUT --------------------------------------------------------- */
-/* Full-screen, single centered card (no side columns) */
 .auth-layout {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;           /* full height */
+  min-height: 100vh;           
   width: 100%;
-  overflow-y: auto;            /* allow scroll if content grows */
+  overflow-y: auto;           
   background: radial-gradient(circle at 50% 50%, #00594f 0%, #003f3b 100%);
   position: relative;
   isolation: isolate;
-  padding: 2rem;               /* breathing room on desktop */
+  padding: 2rem;               
 }
 
-/* Elegant Apple-style soft gradient light */
 .auth-layout::before {
   content: "";
   position: absolute;
@@ -39,7 +35,7 @@
   z-index: 0;
 }
 
-/* CARD ----------------------------------------------------------- */
+
 .auth-card {
   position: relative;
   z-index: 1;
@@ -48,7 +44,7 @@
   border-radius: 24px;
   padding: clamp(2rem, 4vw, 3rem);
   width: 100%;
-  max-width: 900px;            /* desktop-friendly width */
+  max-width: 900px;            
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(20px) saturate(160%);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
@@ -61,7 +57,6 @@
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* LOGO DOT ------------------------------------------------------- */
 .app-mark {
   width: 64px;
   height: 64px;
@@ -71,7 +66,6 @@
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
 }
 
-/* HEADINGS ------------------------------------------------------- */
 .welcome {
   color: #fffffe;
   font-weight: 700;
@@ -91,7 +85,7 @@
   line-height: 1.4;
 }
 
-/* FORM ----------------------------------------------------------- */
+/* FORM --------- */
 .form {
   display: flex;
   flex-direction: column;
@@ -133,7 +127,6 @@ label {
   border-color: #e16162;
 }
 
-/* ERROR + HINT --------------------------------------------------- */
 .error {
   color: #ffd6d6;
   font-size: 0.85rem;
@@ -145,8 +138,6 @@ label {
   font-size: 0.9rem;
   margin-top: -0.4rem;
 }
-
-/* BUTTON --------------------------------------------------------- */
 .btn {
   margin-top: 0.6rem;
   width: 100%;
@@ -172,7 +163,6 @@ label {
   cursor: not-allowed;
 }
 
-/* FOOTER LINK ---------------------------------------------------- */
 .helper {
   margin-top: 1.6rem;
   color: #abd1c6;
@@ -190,8 +180,6 @@ label {
   opacity: 0.8;
   text-decoration: underline;
 }
-
-/* RESPONSIVENESS ------------------------------------------------- */
 @media (max-width: 600px) {
   .auth-card {
     padding: 2.2rem 1.4rem;
@@ -202,8 +190,7 @@ label {
   .sub { font-size: 0.95rem; }
 }
 
-/* Remove any old caps that made it look “phone-sized” */
 @media (min-width: 1200px) {
-  .auth-card { max-width: 900px; } /* keep it wide on desktop */
+  .auth-card { max-width: 900px; } 
 }
 .auth-left, .auth-right { display: none !important; }

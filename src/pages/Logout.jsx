@@ -1,4 +1,3 @@
-// src/pages/Logout.jsx
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
@@ -8,9 +7,8 @@ export default function Logout() {
   const nav = useNavigate();
 
   useEffect(() => {
-    // Call your logout function from AuthContext
     logout?.();
-    // Redirect to register (or login) after logout
+    // takes u back to register page after you logout
     nav("/register", { replace: true });
   }, [logout, nav]);
 
