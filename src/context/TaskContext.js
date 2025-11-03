@@ -13,17 +13,20 @@ export const TaskProvider = ({ children }) => {
   const [sortBy, setSortBy] = useState('createdAt'); // createdAt | title | category | status
   const [sortDir, setSortDir] = useState('desc'); // asc | desc
 
-  const addTask = (task) => {
-    const t = {
-      id: task.id ?? Date.now(),
-      text: task.text ?? '',
-      category: task.category ?? 'General',
-      done: !!task.done,
-      createdAt: Date.now(),
-      updatedAt: Date.now(),
+    const addTask = (task) => {
+        const t = {
+            id: task.id ?? Date.now(),
+            title: task.title ?? '',        //use title instead of text
+            description: task.description ?? '', //include description
+            category: task.category ?? 'General',
+            subtasks: task.subtasks ?? [],
+            done: !!task.done,
+            createdAt: Date.now(),
+            updatedAt: Date.now(),
+        };
+        setTasks((prev) => [...prev, t]);
     };
-    setTasks(prev => [...prev, t]);
-  };
+
 
   const removeTask = (taskId) => {
     setTasks(prev => prev.filter(t => t.id !== taskId));

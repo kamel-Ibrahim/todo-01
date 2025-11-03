@@ -1,39 +1,6 @@
-﻿//import React, { useState } from 'react';
-
-//function AddTaskForm({ addTask }) {
-//    const [title, setTitle] = useState('');
-//    const [category, setCategory] = useState('');
-
-//    const handleSubmit = (e) => {
-//        e.preventDefault();
-//        if (!title || !category) return;
-//        addTask({ id: Date.now(), title, category });
-//        setTitle('');
-//        setCategory('');
-//    };
-
-//    return (
-//        <form onSubmit={handleSubmit}>
-//            <input
-//                type="text"
-//                placeholder="Task title"
-//                value={title}
-//                onChange={(e) => setTitle(e.target.value)}
-//            />
-//            <input
-//                type="text"
-//                placeholder="Category"
-//                value={category}
-//                onChange={(e) => setCategory(e.target.value)}
-//            />
-//            <button type="submit">Add Task</button>
-//        </form>
-//    );
-//}
-
-//export default AddTaskForm;
-
+﻿
 import React, { useState } from "react";
+import "../styles/TaskForm.css"; 
 
 function AddTaskForm({ addTask }) {
     const [title, setTitle] = useState("");
@@ -79,6 +46,7 @@ function AddTaskForm({ addTask }) {
                 placeholder="Task title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
+                className="input-field"
             />
 
             <input
@@ -86,35 +54,48 @@ function AddTaskForm({ addTask }) {
                 placeholder="Category"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
+                className="input-field"
             />
 
             <textarea
                 placeholder="Task description (optional)"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
+                className="textarea-field"
             />
 
-            <div className="subtask-input">
+            {/* Subtask Input Section */}
+            <div className="subtask-container">
                 <input
                     type="text"
                     placeholder="Add subtask"
                     value={subtaskInput}
                     onChange={(e) => setSubtaskInput(e.target.value)}
+                    className="subtask-input-field"
                 />
-                <button type="button" onClick={handleAddSubtask}>
+                <button
+                    type="button"
+                    onClick={handleAddSubtask}
+                    className="subtask-add-btn"
+                >
                     ➕
                 </button>
             </div>
 
+            {/* Subtask Preview */}
             {subtasks.length > 0 && (
                 <ul className="subtask-list-preview">
                     {subtasks.map((st) => (
-                        <li key={st.id}>{st.text}</li>
+                        <li key={st.id} className="subtask-preview-item">
+                            {st.text}
+                        </li>
                     ))}
                 </ul>
             )}
 
-            <button type="submit">Add Task</button>
+            <button type="submit" className="submit-btn">
+                Add Task
+            </button>
         </form>
     );
 }

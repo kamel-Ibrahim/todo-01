@@ -1,51 +1,6 @@
-//import React, { useState, useContext } from 'react';
-//import { TaskContext } from '../context/TaskContext';
-
-//const TaskCard = ({ task }) => {
-//  const { removeTask, toggleDone, updateTask } = useContext(TaskContext);
-//  const [isEditing, setIsEditing] = useState(false);
-//  const [text, setText] = useState(task.text);
-//  const [category, setCategory] = useState(task.category || 'General');
-
-//  const save = () => {
-//    const t = text.trim();
-//    if (!t) return;
-//    updateTask(task.id, { text: t, category });
-//    setIsEditing(false);
-//  };
-
-//  return (
-//    <div className={`task-card ${task.done ? 'done' : ''}`}>
-//      <div className="task-main">
-//        <input type="checkbox" checked={task.done} onChange={() => toggleDone(task.id)} aria-label="mark done" />
-//        {isEditing ? (
-//          <input value={text} onChange={(e)=>setText(e.target.value)} className="task-edit-input" />
-//        ) : (
-//          <p className="task-text">{task.text}</p>
-//        )}
-//        <span className="task-category-badge">{task.category || 'General'}</span>
-//      </div>
-//      <div className="task-actions">
-//        {isEditing ? (
-//          <>
-//            <button className="btn" onClick={save}>Save</button>
-//            <button className="btn" onClick={()=>setIsEditing(false)}>Cancel</button>
-//          </>
-//        ) : (
-//          <>
-//            <button className="btn" onClick={()=>setIsEditing(true)}>Edit</button>
-//            <button className="btn danger" onClick={()=>removeTask(task.id)}>Delete</button>
-//          </>
-//        )}
-//      </div>
-//    </div>
-//  );
-//};
-
-//export default TaskCard;
-
 import React, { useState, useContext } from "react";
 import { TaskContext } from "../context/TaskContext";
+import "../components/TaskCard.css";
 
 const TaskCard = ({ task }) => {
     const { removeTask, toggleDone, updateTask } = useContext(TaskContext);
@@ -70,40 +25,43 @@ const TaskCard = ({ task }) => {
 
     return (
         <div className={`task-card ${task.done ? "done" : ""}`}>
+            {/* Category badge */}
+            <span className={`task-category ${task.category || "General"}`}>
+                {task.category || "General"}
+            </span>
+
             <div className="task-main">
                 <input
                     type="checkbox"
                     checked={task.done}
                     onChange={() => toggleDone(task.id)}
                     aria-label="mark done"
+                    className="task-checkbox"
                 />
 
                 {isEditing ? (
-                    <>
+                    <div className="edit-section">
                         <input
                             value={text}
                             onChange={(e) => setText(e.target.value)}
                             className="task-edit-input"
+                            placeholder="Task title"
                         />
                         <textarea
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                             className="task-edit-desc"
-                            placeholder="Description"
+                            placeholder="Description (optional)"
                         />
-                    </>
+                    </div>
                 ) : (
                     <div className="task-content">
-                        <p className="task-text">{task.title}</p>
-                        {task.description && (
+                        <h3 className="task-title">{task.title}</h3>
+                        {task.description && task.description.trim() !== "" && (
                             <p className="task-desc">{task.description}</p>
                         )}
                     </div>
                 )}
-
-                <span className="task-category-badge">
-                    {task.category || "General"}
-                </span>
             </div>
 
             {/* Subtasks */}
@@ -122,24 +80,17 @@ const TaskCard = ({ task }) => {
                 </ul>
             )}
 
+            {/* Actions */}
             <div className="task-actions">
                 {isEditing ? (
                     <>
-                        <button className="btn" onClick={save}>
-                            Save
-                        </button>
-                        <button className="btn" onClick={() => setIsEditing(false)}>
-                            Cancel
-                        </button>
+                        <button className="btn" onClick={save}>Save</button>
+                        <button className="btn cancel" onClick={() => setIsEditing(false)}>Cancel</button>
                     </>
                 ) : (
                     <>
-                        <button className="btn" onClick={() => setIsEditing(true)}>
-                            Edit
-                        </button>
-                        <button className="btn danger" onClick={() => removeTask(task.id)}>
-                            Delete
-                        </button>
+                        <button className="btn edit" onClick={() => setIsEditing(true)}>Edit</button>
+                        <button className="btn danger" onClick={() => removeTask(task.id)}>Delete</button>
                     </>
                 )}
             </div>
