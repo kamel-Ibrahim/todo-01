@@ -1,0 +1,209 @@
+/* RESET & BASE -------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-content {
+  padding: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* LAYOUT --------------------------------------------------------- */
+/* Full-screen, single centered card (no side columns) */
+.auth-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;           /* full height */
+  width: 100%;
+  overflow-y: auto;            /* allow scroll if content grows */
+  background: radial-gradient(circle at 50% 50%, #00594f 0%, #003f3b 100%);
+  position: relative;
+  isolation: isolate;
+  padding: 2rem;               /* breathing room on desktop */
+}
+
+/* Elegant Apple-style soft gradient light */
+.auth-layout::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 60% 40%,
+    rgba(255, 255, 255, 0.06),
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* CARD ----------------------------------------------------------- */
+.auth-card {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: clamp(2rem, 4vw, 3rem);
+  width: 100%;
+  max-width: 900px;            /* desktop-friendly width */
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  text-align: center;
+  animation: cardFade 0.9s ease-out;
+}
+
+@keyframes cardFade {
+  from { opacity: 0; transform: translateY(30px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* LOGO DOT ------------------------------------------------------- */
+.app-mark {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.25rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f9bc60 0%, #e16162 100%);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* HEADINGS ------------------------------------------------------- */
+.welcome {
+  color: #fffffe;
+  font-weight: 700;
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  letter-spacing: -0.4px;
+}
+
+.brand {
+  color: #f9bc60;
+  font-weight: 800;
+}
+
+.sub {
+  color: #c6dcd5;
+  margin: 0.5rem 0 2rem;
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* FORM ----------------------------------------------------------- */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1.25rem;
+  text-align: left;
+}
+
+label {
+  color: #fffffe;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  background: rgba(7, 59, 54, 0.8);
+  color: #fffffe;
+  font-size: 1rem;
+  transition: all 0.25s ease;
+}
+
+.input::placeholder {
+  color: #8fbab0;
+}
+
+.input:focus {
+  border-color: #f9bc60;
+  background: rgba(7, 59, 54, 0.9);
+  box-shadow: 0 0 0 4px rgba(249, 188, 96, 0.18);
+  outline: none;
+}
+
+.input.invalid {
+  border-color: #e16162;
+}
+
+/* ERROR + HINT --------------------------------------------------- */
+.error {
+  color: #ffd6d6;
+  font-size: 0.85rem;
+  margin-top: -0.6rem;
+}
+
+.hint {
+  color: #abd1c6;
+  font-size: 0.9rem;
+  margin-top: -0.4rem;
+}
+
+/* BUTTON --------------------------------------------------------- */
+.btn {
+  margin-top: 0.6rem;
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #f9bc60, #f6a93b);
+  color: #001e1d;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(249, 188, 96, 0.25);
+  filter: brightness(1.02);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* FOOTER LINK ---------------------------------------------------- */
+.helper {
+  margin-top: 1.6rem;
+  color: #abd1c6;
+  font-size: 0.95rem;
+}
+
+.link {
+  color: #f9bc60;
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+
+.link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* RESPONSIVENESS ------------------------------------------------- */
+@media (max-width: 600px) {
+  .auth-card {
+    padding: 2.2rem 1.4rem;
+    border-radius: 20px;
+    max-width: 100%;
+  }
+  .welcome { font-size: 1.9rem; }
+  .sub { font-size: 0.95rem; }
+}
+
+/* Remove any old caps that made it look “phone-sized” */
+@media (min-width: 1200px) {
+  .auth-card { max-width: 900px; } /* keep it wide on desktop */
+}
+.auth-left, .auth-right { display: none !important; }
