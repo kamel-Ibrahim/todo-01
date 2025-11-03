@@ -1,34 +1,103 @@
-import React, { useState, useContext } from 'react';
-import { TaskContext } from '../context/TaskContext';
-import CategorySelect from './CatagorySelect'
-import '../styles/TaskForm.css';
+﻿
+import React, { useState } from "react";
+import "../styles/TaskForm.css"; 
 
-const TaskForm = () => {
-  const [taskText, setTaskText] = useState('');
-  const [category, setCategory] = useState('General');
-  const { addTask } = useContext(TaskContext);
+function AddTaskForm({ addTask }) {
+    const [title, setTitle] = useState("");
+    const [category, setCategory] = useState("");
+    const [description, setDescription] = useState("");
+    const [subtasks, setSubtasks] = useState([]);
+    const [subtaskInput, setSubtaskInput] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!taskText.trim()) return;
-    addTask({ text: taskText.trim(), category });
-    setTaskText('');
-    setCategory('General');
-  };
+    const handleAddSubtask = () => {
+        if (subtaskInput.trim()) {
+            setSubtasks([
+                ...subtasks,
+                { id: Date.now(), text: subtaskInput.trim(), done: false },
+            ]);
+            setSubtaskInput("");
+        }
+    };
 
-  return (
-    <form className="task-form" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={taskText}
-        onChange={(e) => setTaskText(e.target.value)}
-        placeholder="Add a new task"
-        className="task-input"
-      />
-      <CategorySelect value={category} onChange={setCategory} className="task-category" />
-      <button type="submit" className="task-submit">Add Task</button>
-    </form>
-  );
-};
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!title.trim() || !category.trim()) return;
 
-export default TaskForm;
+        addTask({
+            id: Date.now(),
+            title: title.trim(),
+            description: description.trim(),
+            category: category.trim(),
+            subtasks,
+            done: false,
+        });
+
+        // Reset form
+        setTitle("");
+        setCategory("");
+        setDescription("");
+        setSubtasks([]);
+    };
+
+    return (
+        <form onSubmit={handleSubmit} className="add-task-form">
+            <input
+                type="text"
+                placeholder="Task title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                className="input-field"
+            />
+
+            <input
+                type="text"
+                placeholder="Category"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                className="input-field"
+            />
+
+            <textarea
+                placeholder="Task description (optional)"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                className="textarea-field"
+            />
+
+            {/* Subtask Input Section */}
+            <div className="subtask-container">
+                <input
+                    type="text"
+                    placeholder="Add subtask"
+                    value={subtaskInput}
+                    onChange={(e) => setSubtaskInput(e.target.value)}
+                    className="subtask-input-field"
+                />
+                <button
+                    type="button"
+                    onClick={handleAddSubtask}
+                    className="subtask-add-btn"
+                >
+                    ➕
+                </button>
+            </div>
+
+            {/* Subtask Preview */}
+            {subtasks.length > 0 && (
+                <ul className="subtask-list-preview">
+                    {subtasks.map((st) => (
+                        <li key={st.id} className="subtask-preview-item">
+                            {st.text}
+                        </li>
+                    ))}
+                </ul>
+            )}
+
+            <button type="submit" className="submit-btn">
+                Add Task
+            </button>
+        </form>
+    );
+}
+
+export default AddTaskForm;

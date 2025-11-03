@@ -1,3 +1,128 @@
+import React, { useContext, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
+import "../styles/Profile.css";
+import { AuthContext } from "../context/AuthContext";
+import MermaidChart from "../components/MermaidChart";
+
+const completed = 12;
+const missed = 3;
+
+const pieChart = `
+pie title Task Progress
+  "Completed" : ${completed}
+  "Missed" : ${missed}
+`;
+
+let levelTitle = "Beginner";
+if (completed >= 10 && completed < 25) levelTitle = "Rookie";
+else if (completed >= 25 && completed < 50) levelTitle = "Achiever";
+else if (completed >= 50 && completed < 100) levelTitle = "Expert";
+else if (completed >= 100) levelTitle = "Master";
+
 export default function Profile() {
-  return <div style={{padding:16}}>Profile page (placeholder)</div>;
+  const { user, logout } = useContext(AuthContext);
+  const nav = useNavigate();
+
+  const displayName = user?.name || "Guest";
+  const displayEmail = user?.email || "—";
+
+  const initials = useMemo(() => {
+    return (displayName || "?")
+      .split(" ")
+      .filter(Boolean)
+      .slice(0, 2)
+      .map((s) => s[0]?.toUpperCase())
+      .join("") || "?";
+  }, [displayName]);
+
+  const onLogout = () => {
+    logout?.();
+    nav("/login");
+  };
+
+  return (
+    <main className="profile-shell with-navbar">
+      <section className="profile-card-left">
+        <div className="p-head">
+          <div className="p-avatar" aria-label="profile avatar" title={displayName}>
+            <span>{initials}</span>
+          </div>
+          <div className="p-id">
+            <h1 className="p-name">{displayName}</h1>
+            <div className="p-mail">{displayEmail}</div>
+          </div>
+        </div>
+
+        <div className="p-rows">
+          <div className="p-stat completed">
+            <div className="num">{completed}</div>
+            <div className="lbl">Tasks completed</div>
+          </div>
+          <div className="p-stat missed">
+            <div className="num">{missed}</div>
+            <div className="lbl">Tasks missed</div>
+          </div>
+          <div className="p-stat level">
+            <div className="num">{levelTitle}</div>
+            <div className="lbl">Level</div>
+          </div>
+        </div>
+      </section>
+
+      {/* Chart + side panel (about/goals) */}
+      <div className="progress-section">
+        <div className="chart-wrap">
+          {/* Always render in dark theme now */}
+          <MermaidChart chart={pieChart} dark={true} />
+        </div>
+
+        <aside className="side-panel">
+          <div className="about-box">
+            <h3>About Me</h3>
+            <textarea
+              placeholder="Write a few lines about yourself…"
+              defaultValue={localStorage.getItem("profile_about") || ""}
+              onChange={(e) => localStorage.setItem("profile_about", e.target.value)}
+            />
+          </div>
+
+          <div className="goals-box">
+            <div className="goals-head">
+              <h3>Weekly Goals</h3>
+            </div>
+            <ul>
+              <li className="muted-hint">Add your weekly goals here (frontend only).</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+
+      {/* Only Logout button now */}
+      <div className="profile-actions">
+        <button className="btn-logout" onClick={onLogout}>
+          <LogoutIcon />
+          Log Out
+        </button>
+      </div>
+    </main>
+  );
+}
+
+function LogoutIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#f9bc60"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+      <path d="M16 17l5-5-5-5" />
+      <path d="M21 12H9" />
+    </svg>
+  );
 }

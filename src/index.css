@@ -1,39 +1,23 @@
-/* ==================== THEME VARIABLES ==================== */
-
-/* 🌑 Dark mode (default) */
 :root {
-  --bg: #004643;           /* page background */
+  --bg: #004643;          /* background */
   --headline: #fffffe;     /* main white text */
-  --text: #abd1c6;         /* muted text */
-  --surface: #e8e4e6;      /* light card surfaces */
-  --stroke: #001e1d;       /* borders & dark text */
+  --text: #abd1c6;         /* muted light text */
+  --surface: #e8e4e6;      /* card/surface color */
+  --stroke: #001e1d;       /* borders */
   --primary: #f9bc60;      /* buttons, highlights */
-  --danger: #e16162;       /* error, delete */
+  --danger: #e16162;       /* delete/danger */
 }
 
-/* 🌕 Light mode */
-:root.light {
-  --bg: #abd1c6;           /* overall page bg */
-  --headline: #001e1d;     /* main text */
-  --text: #0f3433;         /* subtext / secondary */
-  --surface: #004643;      /* card background */
-  --stroke: #001e1d;       /* dark outlines */
-  --primary: #f9bc60;      /* accents, buttons */
-  --danger: #e16162;       /* warning */
-}
-
-/* ==================== BASE STYLES ==================== */
-
+/* Overall page */
 body {
   background-color: var(--bg);
   color: var(--text);
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* ==================== BUTTON ==================== */
+/* Button */
 .button {
   background-color: var(--primary);
   color: var(--stroke);
@@ -42,15 +26,15 @@ body {
   border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
-  transition: background-color 0.25s ease, transform 0.25s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .button:hover {
-  background-color: #e8aa47; /* slightly darker gold */
+  background-color: #e8aa47; /* darker gold */
   transform: translateY(-1px);
 }
 
-/* ==================== TASK ITEM / CARD ==================== */
+/* Task item cards */
 .task-item {
   background-color: var(--surface);
   color: var(--stroke);
@@ -58,6 +42,5 @@ body {
   padding: 12px;
   margin: 8px 0;
   border-radius: 6px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
