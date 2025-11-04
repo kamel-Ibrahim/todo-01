@@ -1,0 +1,105 @@
+/* Full-page rectangular Achievements layout */
+
+.achievements-page-rect {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #f7f9fc, #e9eef7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  color: #1e293b;
+}
+
+.achievements-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 20px;
+}
+
+/* Create a fixed grid (rectangle) layout */
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+  grid-template-rows: repeat(3, 1fr); /* 3 rows */
+  gap: 24px;
+  width: 80%;
+  height: 70%;
+}
+
+.badge-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 2px solid rgba(148, 163, 184, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.badge-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.badge-card.unlocked {
+  border-color: #16a34a;
+  background: linear-gradient(145deg, #e8f7ec, #ffffff);
+}
+
+.badge-icon {
+  font-size: 42px;
+}
+
+.badge-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 4px 0;
+}
+
+.badge-progress {
+  width: 70%;
+  height: 8px;
+  border-radius: 6px;
+  background: rgba(148, 163, 184, 0.25);
+  overflow: hidden;
+}
+
+.badge-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  transition: width 0.4s ease;
+}
+
+.unlocked .badge-progress-bar {
+  background: linear-gradient(90deg, #16a34a, #22c55e);
+}
+
+.badge-count {
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.badge-status {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.status-unlocked {
+  color: #16a34a;
+  background: rgba(22, 163, 74, 0.1);
+}
+
+.status-locked {
+  color: #64748b;
+  background: rgba(148, 163, 184, 0.15);
+}

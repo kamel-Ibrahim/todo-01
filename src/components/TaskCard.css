@@ -1,0 +1,133 @@
+
+.task-card {
+    position: relative; /* for category badge */
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 16px 12px 12px 50px; /* left padding for checkbox */
+    margin-bottom: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+    .task-card:hover {
+        transform: translateY(-2px);
+    }
+
+    .task-card.done {
+        background-color: #d4edda;
+        opacity: 0.9;
+    }
+
+.task-main {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.task-checkbox {
+    margin-top: 4px; /* aligns with title */
+}
+
+.task-title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.task-desc {
+    color: #555;
+    font-size: 0.9rem;
+    margin: 4px 0;
+}
+
+.subtask-list {
+    margin-top: 8px;
+    padding-left: 20px;
+}
+
+    .subtask-list li {
+        list-style: none;
+        display: flex;
+        align-items: center;
+    }
+
+.subtask-done {
+    text-decoration: line-through;
+    color: #999;
+    margin-left: 5px;
+}
+
+.task-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+    .btn:hover {
+        transform: translateY(-1px);
+    }
+
+    .btn.danger {
+        background-color: #e63946;
+        color: #fff;
+    }
+
+        .btn.danger:hover {
+            background-color: #d62828;
+        }
+
+    .btn.edit {
+        background-color: #f9bc60;
+        color: #001e1d;
+    }
+
+.task-edit-input {
+    flex: 1;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,.1);
+}
+
+/* Category badge - top-left */
+.task-category {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #fff;
+    text-transform: capitalize;
+}
+
+    /* Colors per category */
+    .task-category.General {
+        background-color: #6c757d;
+    }
+    /* gray */
+    .task-category.School {
+        background-color: #007bff;
+    }
+    /* blue */
+    .task-category.Work {
+        background-color: #6f42c1;
+    }
+    /* purple */
+    .task-category.Personal {
+        background-color: #e83e8c;
+    }
+    /* pink */
+    .task-category.All {
+        background-color: #20c997;
+    }
+/* green */
