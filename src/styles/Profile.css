@@ -15,9 +15,45 @@
   color: #fffffe;
   flex-wrap: wrap;
 }
+.p-head { display: flex;
+   align-items: center;
+    gap: 18px; }
+/* Transparent buttons */
+.transparent-btn {
+  background: transparent !important;
+  border: 1.5px solid var(--primary) !important;
+  color: var(--primary) !important;
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
 
-/* left identity */
-.p-head { display: flex; align-items: center; gap: 18px; }
+.transparent-btn:hover {
+  background: rgba(249, 188, 96, 0.15);
+}
+
+
+.transparent-input {
+  background: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  color: #fffffe !important;
+  padding: 6px 8px;
+  border-radius: 8px;
+  outline: none;
+}
+
+.transparent-input::placeholder {
+  color: #abd1c6;
+  opacity: 0.8;
+}
+
+.transparent-input:focus {
+  border-color: var(--primary);
+}
+
 .p-avatar {
   width: 96px; height: 96px; border-radius: 22px;
   background: var(--primary); border: 3px solid var(--surface);
