@@ -21,12 +21,43 @@ export default function MermaidChart({ chart, dark = true }) {
 
     if (!containerRef.current) return;
 
-  
+   
+    const src = (chart || "").trim(); 
+    if (!src) {
+      containerRef.current.innerHTML =
+        "<em style='opacity:.7'>No chart data</em>";
+      return;
+    }
+    try {
+      mermaid.parse(src);
+    } catch (e) {
+      containerRef.current.innerHTML = `
+        <div style="opacity:.75">
+          Mermaid parse error<br/>
+          <code style="font-size:.9rem">${String(e?.message || e)
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")}</code>
+        </div>`;
+      return;
+    }
+
     containerRef.current.innerHTML = "";
     const id = "mm_" + Math.random().toString(36).slice(2);
-    mermaid.render(id, chart).then(({ svg }) => {
-      containerRef.current.innerHTML = svg;
-    });
+
+    mermaid
+      .render(id, src)
+      .then(({ svg }) => {
+        containerRef.current.innerHTML = svg;
+      })
+      .catch((e) => {
+        containerRef.current.innerHTML = `
+          <div style="opacity:.75">
+            Mermaid render error<br/>
+            <code style="font-size:.9rem">${String(e?.message || e)
+              .replace(/</g, "&lt;")
+              .replace(/>/g, "&gt;")}</code>
+          </div>`;
+      });
   }, [chart, dark]);
 
   return (

@@ -7,11 +7,12 @@ import MermaidChart from "../components/MermaidChart";
 const completed = 12;
 const missed = 3;
 
-const pieChart = `
-pie title Task Progress
-  "Completed" : ${completed}
-  "Missed" : ${missed}
+const pieChart = `pie showData
+  title Task Progress
+  "Completed": ${completed}
+  "Missed": ${missed}
 `;
+
 
 let levelTitle = "Beginner";
 if (completed >= 10 && completed < 25) levelTitle = "Rookie";
