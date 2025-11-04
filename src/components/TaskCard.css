@@ -1,4 +1,4 @@
-
+﻿
 .task-card {
     position: relative; /* for category badge */
     background-color: #fff;
@@ -26,20 +26,51 @@
 }
 
 .task-checkbox {
-    margin-top: 4px; /* aligns with title */
+    position: relative;
+    top: 12px; /* moves it slightly down */
+    flex-shrink: 0;
 }
 
-.task-title {
+/*.task-title {
     margin: 0;
     font-size: 1.1rem;
     font-weight: 600;
+}*/
+
+/*.task-desc {
+    color: #555;
+    font-size: 0.9rem;
+    margin: 4px 0;
+}*/
+
+.task-content {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* space between title and description */
+    flex-wrap: wrap; /* keeps responsive layout */
+}
+
+/*.task-title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #001e1d;
+}*/
+.task-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 6px; /* ⬅️ this moves it a little bit down */
 }
 
 .task-desc {
     color: #555;
     font-size: 0.9rem;
-    margin: 4px 0;
+    margin: 0;
+    opacity: 0.85;
+    margin-top: 6px; /* space below title */
 }
+
 
 .subtask-list {
     margin-top: 8px;
