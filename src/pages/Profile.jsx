@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from "react";
+import React, { useContext, useMemo, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Profile.css";
 import { AuthContext } from "../context/AuthContext";
@@ -40,6 +40,36 @@ export default function Profile() {
     nav("/login");
   };
 
+  // Weekly goals state
+  const [goals, setGoals] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem("profile_goals") || "[]");
+    } catch {
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem("profile_goals", JSON.stringify(goals));
+  }, [goals]);
+
+  const addGoal = () => {
+    setGoals((prev) =>
+      prev.length < 3 ? [...prev, { text: "", done: false }] : prev
+    );
+  };
+  const toggleGoal = (i) => {
+    setGoals((prev) =>
+      prev.map((g, idx) => (idx === i ? { ...g, done: !g.done } : g))
+    );
+  };
+  const updateGoal = (i, text) => {
+    setGoals((prev) => prev.map((g, idx) => (idx === i ? { ...g, text } : g)));
+  };
+  const removeGoal = (i) => {
+    setGoals((prev) => prev.filter((_, idx) => idx !== i));
+  };
+
   return (
     <main className="profile-shell with-navbar">
       <section className="profile-card-left">
@@ -72,7 +102,6 @@ export default function Profile() {
       {/* Chart + side panel (about/goals) */}
       <div className="progress-section">
         <div className="chart-wrap">
-          {/* Always render in dark theme now */}
           <MermaidChart chart={pieChart} dark={true} />
         </div>
 
@@ -89,15 +118,46 @@ export default function Profile() {
           <div className="goals-box">
             <div className="goals-head">
               <h3>Weekly Goals</h3>
+              <button className="mini-btn transparent-btn" onClick={addGoal} disabled={goals.length >= 3}>
+                + Add
+              </button>
             </div>
+
             <ul>
-              <li className="muted-hint">Add your weekly goals here (frontend only).</li>
+              {goals.length === 0 && (
+                <li className="muted-hint">Add up to 3 small wins for this week.</li>
+              )}
+
+              {goals.map((g, i) => (
+                <li key={i}>
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={!!g.done}
+                      onChange={() => toggleGoal(i)}
+                    />
+                    <input
+                      className="goal-text transparent-input"
+                      value={g.text}
+                      onChange={(e) => updateGoal(i, e.target.value)}
+                      placeholder={`Goal ${i + 1}`}
+                    />
+                  </label>
+                  <button
+                    type="button"
+                    className="mini-btn transparent-btn"
+                    style={{ marginLeft: 6, fontSize: "0.85rem", padding: "4px 8px" }}
+                    onClick={() => removeGoal(i)}
+                  >
+                    Remove
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
         </aside>
       </div>
 
-      {/* Only Logout button now */}
       <div className="profile-actions">
         <button className="btn-logout" onClick={onLogout}>
           <LogoutIcon />

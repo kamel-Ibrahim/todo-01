@@ -11,7 +11,6 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [touched, setTouched] = useState({ email: false, password: false });
 
-  // same LAU rule as Register
   const lauRegex = /^[a-z]+(?:\.[a-z]+)*\.[a-z][a-z0-9]*@lau\.edu(?:\.lb)?$/i;
   const isLauEmail = lauRegex.test(email);
 
@@ -33,7 +32,7 @@ export default function Login() {
     touched.email && !email
       ? "Email is required"
       : touched.email && !isLauEmail
-      ? "Use your LAU email (@lau.edu.lb)"
+      ? "Use your LAU email (@lau.edu)"
       : "";
 
   const passwordError =
@@ -57,9 +56,9 @@ export default function Login() {
       <div className="auth-card">
         <div className="app-mark" aria-hidden />
         <h1 className="welcome">
-          Welcome back to <span className="brand">YourApp</span>
+          Welcome back to <span className="brand">CheckFlow</span>
         </h1>
-        {/* keep spacing identical to Register */}
+        {}
         <p className="sub" style={{ visibility: "hidden" }}>
           placeholder
         </p>
