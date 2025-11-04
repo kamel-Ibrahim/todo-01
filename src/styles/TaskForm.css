@@ -1,8 +1,8 @@
 /* src/styles/TaskForm.css */
 .task-form {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 .task-input {

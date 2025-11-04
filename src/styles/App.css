@@ -1,37 +1,35 @@
-﻿/* src/styles/App.css */
-/*body {
-  font-family: 'Helvetica Neue', sans-serif;
-  background-color: #f3f0e7;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-h1, h2 {
-  color: #0e5e44;
+﻿
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* prevent double scrollbars */
 }
 
 .main-content {
-  padding: 20px;
-  margin-top: 80px;*/ /* For Navbar space */
-/*}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}*/
-
-/* Responsive Design */
-/*@media (max-width: 768px) {
-  .task-form {
+    position: relative;
+    top: 60px; /* same as navbar height */
+    height: calc(100vh - 60px);
+    overflow-y: auto; /* allow scrolling for all page content */
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
     flex-direction: column;
-  }
+}
 
-  .task-submit {
-    width: 100%;
-  }
-}*/
-/* App.css */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+/* Optional: keep task form visible while scrolling */
+.task-form-section {
+    position: sticky;
+    top: 0;
+    background: #f9f9f9;
+    z-index: 10;
+    padding-bottom: 10px;
+}
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -60,11 +58,12 @@ header {
 }
 
 /* Add Task Form */
-form {
+    form {
     display: flex;
     gap: 0.5rem;
     margin-bottom: 1rem;
 }
+
 
 input[type="text"] {
     flex: 1;
@@ -126,6 +125,7 @@ button {
     .task-card strong {
         font-size: 1.05rem;
     }
+
 
 /* Calendar Section */
 .calendar-view {
