@@ -2,13 +2,16 @@
 
 .achievements-page-rect {
   width: 100vw;
-  height: 100vh;
-  background: linear-gradient(135deg, #f7f9fc, #e9eef7);
+   min-height: 100vh;   
+  background:#003f3b; 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  overflow-y: auto;
+   justify-content: flex-start;
   align-items: center;
+  padding: 110px 24px 40px;
   overflow: hidden;
+
   color: #1e293b;
 }
 
