@@ -19,6 +19,7 @@ export default function Login() {
     return s ? s[0].toUpperCase() + s.slice(1).toLowerCase() : "";
   }
 
+  // eslint-disable-next-line no-unused-vars
   const derivedName = useMemo(() => {
     if (!isLauEmail) return "";
     const local = email.split("@")[0];
