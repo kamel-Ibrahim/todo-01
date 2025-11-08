@@ -56,9 +56,9 @@ export default function Login() {
   return (
     <div className="auth-layout app-gradient">
       <div className="auth-card">
-        <div className="app-mark" aria-hidden />
+        <img src="/logo512.png" alt="YourApp Logo" classname="app-mark"/>
         <h1 className="welcome">
-          Welcome back to <span className="brand">YourApp</span>
+          Welcome back to <span className="brand">CheckFlow</span>
         </h1>
         {/* keep spacing identical to Register */}
         <p className="sub" style={{ visibility: "hidden" }}>

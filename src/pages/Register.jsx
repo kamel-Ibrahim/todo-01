@@ -64,9 +64,9 @@ export default function Register() {
   return (
     <div className="auth-layout app-gradient">
       <div className="auth-card">
-        <div className="app-mark" aria-hidden />
+        <img src="/logo512.png" alt="YourApp Logo" classname="app-mark"/>
         <h1 className="welcome">
-          Welcome to <span className="brand">YourApp</span>
+           Create <span className="brand"> an account</span>
         </h1>
         {/* Placeholder to keep same spacing as before */}
         <p className="sub" style={{ visibility: "hidden" }}>

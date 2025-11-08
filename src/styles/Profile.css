@@ -18,7 +18,7 @@
 .p-head { display: flex;
    align-items: center;
     gap: 18px; }
-/* Transparent buttons */
+
 .transparent-btn {
   background: transparent !important;
   border: 1.5px solid var(--primary) !important;
@@ -83,26 +83,95 @@
 }
 .btn-logout:hover { background: rgba(249, 188, 96, 0.12); }
 
-/* chart + side panel */
+/* chart+side panel */
 .progress-section { display: flex; gap: 32px; align-items: flex-start; margin-top: 20px; flex-wrap: wrap; }
-.chart-wrap { flex: 1 1 560px; min-width: 320px; }
+
+/*Mermaid chart is translucent green */
+.chart-wrap {
+  flex: 1 1 560px; min-width: 320px;
+  background: rgba(0, 89, 79, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 12px;
+  color: #e6f2f0;
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.30);
+}
+
 .side-panel { flex: 0 0 360px; display: grid; gap: 16px; }
 
+/*About / Goals boxes to match translucent green card */
 .about-box, .goals-box {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0, 89, 79, 0.28);
+  border: 1px solid rgba(255,255,255,0.12);
   border-radius: 16px; padding: 16px 18px; color: #fffffe;
-}
-.about-box h3, .goals-box h3 { margin: 0 0 10px; font-size: 18px; font-weight: 700; color: #fffffe; }
-.about-box textarea {
-  width: 100%; min-height: 120px; background: transparent;
-  border: 1.5px solid var(--primary); border-radius: 10px;
-  color: #fffffe; padding: 10px; resize: vertical;
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.28);
 }
 
+.about-box h3, .goals-box h3 { margin: 0 0 10px; font-size: 18px; font-weight: 700; color: #fffffe; }
+
+/* styled to green glass instead of white (too much white)*/
+.about-box textarea {
+  width: 100%; min-height: 120px;
+  background: rgba(0, 89, 79, 0.25);
+  border: 1.5px solid rgba(249, 188, 96, 0.35);
+  border-radius: 10px;
+  color: #e6f2f0; padding: 10px; resize: vertical;
+  outline: none;
+}
+.about-box textarea::placeholder { color: #c6dcd5; opacity: 0.9; }
+.about-box textarea:focus {
+  border-color: #f9bc60;
+  background: rgba(0, 89, 79, 0.35);
+  box-shadow: 0 0 0 3px rgba(249, 188, 96, 0.20);
+}
+
+/* goals list keeps its spacing (unchanged) */
 .goals-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
 .goals-box ul { list-style: none; margin: 0; padding: 0; }
-.goals-box li { margin: 8px 0; }
+/* fixed checkboxes for the goals */
+.goals-box li {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin: 10px 0 !important;
+}
+
+.goals-box input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #f9bc60;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.goals-box input[type="text"] {
+  flex: 1;
+  background: rgba(0, 89, 79, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #e6f2f0;
+  border-radius: 8px;
+  padding: 6px 8px;
+  outline: none;
+}
+
+.goals-box button {
+  border: 1.5px solid #f9bc60;
+  color: #f9bc60;
+  background: transparent;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.goals-box button:hover {
+  background: rgba(249, 188, 96, 0.15);
+}
 .muted-hint { color: #abd1c6; font-size: 14px; }
 
 /* responsive */
