@@ -1,0 +1,128 @@
+.calendar-card {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto 18px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.06);
+  padding: 16px 18px 18px;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.calendar-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.calendar-header p {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.calendar-range {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+/* Day strip */
+
+.calendar-strip {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.calendar-strip::-webkit-scrollbar {
+  height: 6px;
+}
+.calendar-strip::-webkit-scrollbar-thumb {
+  background: #cbd5f5;
+  border-radius: 999px;
+}
+
+.calendar-day {
+  flex: 0 0 170px;
+  background: #f9fafb;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  padding: 10px 10px 12px;
+}
+
+.calendar-day.today {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.calendar-day-header {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.cd-weekday {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #64748b;
+}
+
+.cd-day {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.calendar-events {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.calendar-empty {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.calendar-event {
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-left-width: 4px;
+  padding: 6px 8px;
+  font-size: 12px;
+}
+
+.ce-time {
+  font-weight: 500;
+  color: #4b5563;
+  margin-bottom: 2px;
+}
+
+.ce-title {
+  color: #111827;
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+  .calendar-card {
+    padding: 12px 12px 14px;
+  }
+
+  .calendar-day {
+    flex: 0 0 150px;
+  }
+}

@@ -1,0 +1,123 @@
+POST http://localhost:5000/api/tasks
+
+{
+  "title": "Finish CSC443 project",
+  "description": "Implement backend + DB",
+  "category": "University",
+  "dueAt": "2025-12-10T18:00:00.000Z"
+}
+
+output:
+
+{
+    "title": "Finish CSC443 project",
+    "description": "Implement backend + DB",
+    "category": "University",
+    "dueAt": "2025-12-10T18:00:00.000Z",
+    "done": false,
+    "subtasks": [],
+    "_id": "692ea80885ddedc99acdede7",
+    "createdAt": "2025-12-02T08:49:12.760Z",
+    "updatedAt": "2025-12-02T08:49:12.760Z",
+    "__v": 0
+}
+POST /api/tasks 201 643.693 ms - 277
+
+
+---------------------------------------------------------------
+
+
+
+GET http://localhost:5000/api/tasks
+
+output:
+[
+    {
+        "_id": "692eac4098a0dbcb55c5abee",
+        "title": "Finish CSC443 project",
+        "description": "Implement backend + DB",
+        "category": "University",
+        "dueAt": "2025-12-10T18:00:00.000Z",
+        "done": false,
+        "subtasks": [],
+        "createdAt": "2025-12-02T09:07:12.208Z",
+        "updatedAt": "2025-12-02T09:07:12.208Z",
+        "__v": 0
+    },
+    {
+        "_id": "692ea80885ddedc99acdede7",
+        "title": "Finish CSC443 project",
+        "description": "Implement backend + DB",
+        "category": "University",
+        "dueAt": "2025-12-10T18:00:00.000Z",
+        "done": false,
+        "subtasks": [],
+        "createdAt": "2025-12-02T08:49:12.760Z",
+        "updatedAt": "2025-12-02T08:49:12.760Z",
+        "__v": 0
+    }
+]
+GET /api/tasks 200 156.914 ms - 557
+
+
+
+
+---------------------------------------------------------------
+
+
+
+GET http://localhost:5000/api/tasks/692ea80885ddedc99acdede7
+
+output:
+{
+    "_id": "692ea80885ddedc99acdede7",
+    "title": "Finish CSC443 project",
+    "description": "Implement backend + DB",
+    "category": "University",
+    "dueAt": "2025-12-10T18:00:00.000Z",
+    "done": false,
+    "subtasks": [],
+    "createdAt": "2025-12-02T08:49:12.760Z",
+    "updatedAt": "2025-12-02T08:49:12.760Z",
+    "__v": 0
+}
+
+GET /api/tasks/692ea80885ddedc99acdede7 200 170.035 ms - 277
+
+
+---------------------------------------------------------------
+
+PUT http://localhost:5000/api/tasks/692ea80885ddedc99acdede7
+{ "done": true }
+
+output:
+
+{
+    "_id": "692ea80885ddedc99acdede7",
+    "title": "Finish CSC443 project",
+    "description": "Implement backend + DB",
+    "category": "University",
+    "dueAt": "2025-12-10T18:00:00.000Z",
+    "done": true,
+    "subtasks": [],
+    "createdAt": "2025-12-02T08:49:12.760Z",
+    "updatedAt": "2025-12-02T09:11:14.594Z",
+    "__v": 0
+}
+
+PUT /api/tasks/692ea80885ddedc99acdede7 200 186.208 ms - 276
+
+
+
+---------------------------------------------------------------
+
+
+DELETE http://localhost:5000/api/tasks/692ea80885ddedc99acdede7
+
+output:
+{
+    "message": "Task deleted"
+}
+
+DELETE /api/tasks/692ea80885ddedc99acdede7 200 183.259 ms - 26
+

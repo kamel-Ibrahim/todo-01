@@ -1,0 +1,281 @@
+/* ============ TASK CARD – MODERN ============ */
+
+.task-card {
+  position: relative;
+  display: flex;
+  gap: 14px;
+  padding: 16px 18px 14px;
+  border-radius: 24px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 18px 38px rgba(15, 23, 42, 0.06);
+  transition: box-shadow 0.18s ease, transform 0.18s ease,
+    border-color 0.18s ease, background-color 0.18s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 48px rgba(15, 23, 42, 0.09);
+  border-color: #d1d5db;
+}
+
+/* subtle color accent for completed */
+.task-card.done {
+  background: linear-gradient(135deg, #f0fdf4, #ecfdf3);
+  border-color: #bbf7d0;
+}
+
+/* left column: main checkbox */
+
+.task-main-checkbox {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 4px;
+}
+
+.task-main-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #22c55e;
+}
+
+/* right column: content */
+
+.task-card-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* top row: category + status pill */
+
+.task-card-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+/* category pill */
+
+.task-category-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: capitalize;
+  letter-spacing: 0.03em;
+  background-color: #eff6ff;
+  color: #1d4ed8;
+}
+
+/* status pill */
+
+.task-status-pill {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 500;
+  border: 1px solid #e5e7eb;
+  color: #4b5563;
+  background: #f9fafb;
+}
+
+.task-card.done .task-status-pill {
+  background: #dcfce7;
+  border-color: #bbf7d0;
+  color: #15803d;
+}
+
+/* title + description */
+
+.task-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.task-title {
+  margin: 2px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.task-card.done .task-title {
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(22, 163, 74, 0.5);
+}
+
+.task-desc {
+  margin: 2px 0 6px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* subtasks */
+
+.subtask-list {
+  list-style: none;          /* remove bullet dots */
+  margin: 6px 0 10px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.subtask-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #374151;
+}
+
+.subtask-item label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.subtask-item input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  accent-color: #2563eb;
+}
+
+/* actions row: Edit / Delete + due text */
+
+.task-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+/* small pill buttons */
+
+.task-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.task-btn {
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  padding: 6px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  background: #f9fafb;
+  color: #374151;
+  transition: background-color 0.15s ease, border-color 0.15s ease,
+    transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.task-btn:hover {
+  background-color: #e5e7eb;
+  transform: translateY(-1px);
+}
+
+.task-btn.edit {
+  border-color: #bfdbfe;
+  background-color: #eff6ff;
+  color: #1d4ed8;
+}
+
+.task-btn.edit:hover {
+  background-color: #dbeafe;
+  box-shadow: 0 8px 16px rgba(59, 130, 246, 0.18);
+}
+
+.task-btn.delete {
+  border-color: #fecaca;
+  background-color: #fef2f2;
+  color: #b91c1c;
+}
+
+.task-btn.delete:hover {
+  background-color: #fee2e2;
+  box-shadow: 0 8px 16px rgba(248, 113, 113, 0.18);
+}
+
+/* due text */
+
+.task-due {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* small screen tweaks */
+
+@media (max-width: 640px) {
+  .task-card {
+    padding: 14px 14px 12px;
+    border-radius: 20px;
+  }
+
+  .task-card-top-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .task-card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+/* === TASK CARD BUTTON REFINEMENT === */
+
+.task-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* override global .btn when inside a task card */
+.task-card .btn {
+  padding: 6px 14px;
+  font-size: 13px;
+  border-radius: 999px;
+  min-width: 0;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  color: #374151;
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+.task-card .btn:hover {
+  background-color: #e5e7eb;
+}
+
+/* Edit button */
+.task-card .btn.edit {
+  background-color: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1d4ed8;
+}
+
+.task-card .btn.edit:hover {
+  background-color: #dbeafe;
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.18);
+}
+
+/* Delete button */
+.task-card .btn.danger {
+  background-color: #fef2f2;
+  border-color: #fecaca;
+  color: #b91c1c;
+}
+
+.task-card .btn.danger:hover {
+  background-color: #fee2e2;
+  box-shadow: 0 4px 10px rgba(248, 113, 113, 0.18);
+}

@@ -1,0 +1,41 @@
+First we create a user using POST http://localhost:5000/api/auth/register
+{
+  "name": "User One",
+  "email": "user1@example.com",
+  "password": "123456"
+}
+it returns 
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MmVjZDNhNTRmNDA2ZjNmMTdkZTY5NyIsImlhdCI6MTc2NDY3NDg3NCwiZXhwIjoxNzY1Mjc5Njc0fQ.WuSs2LZSRdvJBN5ReiBEy7Swu12cyeCDbFAyEE_BjH0",
+    "user": {
+        "id": "692ecd3a54f406f3f17de697",
+        "name": "User One",
+        "email": "user1@example.com"
+    }
+}
+
+if we try again with same name and email :
+{
+    "message": "User already exists"
+}
+
+it also fails with missing info 
+
+
+to login POST http://localhost:5000/api/auth/login
+
+
+it gives :
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MmVjZDNhNTRmNDA2ZjNmMTdkZTY5NyIsImlhdCI6MTc2NDY3NTAzNywiZXhwIjoxNzY1Mjc5ODM3fQ.MbuYn5hnPDoT7XDRvGZTU-_2TV1MYAVYBswqE9lGkOQ",
+    "user": {
+        "id": "692ecd3a54f406f3f17de697",
+        "name": "User One",
+        "email": "user1@example.com"
+    }
+}
+
+with wrong password or a username that doesnt exist it gives 
+{
+  "message": "Invalid credentials"
+}

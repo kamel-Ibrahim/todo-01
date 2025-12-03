@@ -1,0 +1,180 @@
+/* src/styles/TaskForm.css */
+
+/*.task-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: transparent;*/      /* let page bg show */
+  /*border-radius: 10px;
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 40px;
+}
+
+.task-input {
+  padding: 15px;
+  width: 100%;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 2px solid #001e1d;*/          /* stroke */
+  /*background: #073b36;*/                /* dark teal field */
+  /*color: #fffffe;*/                      /* input text */
+  /*font-size: 16px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-input::placeholder {
+  color: #7fb2a7;
+}
+
+.task-input:focus {
+  border-color: #f9bc60;*/              /* primary */
+  /*outline: none;
+  box-shadow: 0 0 0 4px rgba(249,188,96,.22);
+}
+
+.task-submit {
+  background-color: #f9bc60;*/          /* primary */
+  /*color: #001e1d;*/                      /* dark text on gold */
+  /*padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  max-width: 500px;
+  border: 2px solid #f9bc60;
+  transition: filter 0.2s ease, transform 0.1s ease;
+}
+
+.task-submit:hover {
+  filter: brightness(.95);
+  transform: translateY(-1px);
+}
+
+.task-submit:active {
+  transform: translateY(1px);
+}*/
+
+/* Responsive Design */
+/*@media (max-width: 768px) {
+  .task-form {
+    width: 90%;
+    margin-top: 10px;
+  }
+
+  .task-input {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .task-submit {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}*/
+.add-task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Inputs */
+.input-field,
+.textarea-field {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.textarea-field {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* Subtask Section */
+.subtask-container {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.subtask-input-field {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.subtask-add-btn {
+    padding: 10px 16px;
+    background-color: #0e5e44;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background 0.3s ease;
+}
+
+    .subtask-add-btn:hover {
+        background-color: #107a59;
+    }
+
+/* Subtask Preview */
+.subtask-list-preview {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.subtask-preview-item {
+    background: #f1f5f9;
+    margin-top: 8px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+/* Submit Button */
+.submit-btn {
+    background-color: #0e5e44;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+    .submit-btn:hover {
+        background-color: #107a59;
+    }
+
+/* Responsive Layout */
+@media (max-width: 600px) {
+    .subtask-container {
+        flex-direction: column;
+    }
+
+    .subtask-add-btn {
+        width: 100%;
+    }
+}
