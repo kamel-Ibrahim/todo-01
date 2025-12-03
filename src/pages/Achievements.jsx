@@ -35,12 +35,16 @@ function computeStreak(dateKeys) {
 
 export default function Achievements() {
   const { tasks = [], pastTasks = [] } = useContext(TaskContext) || {};
+
+  // 🔹 Local computation from current tasks
   const localData = useMemo(() => {
     const completed =
       (pastTasks?.length ? pastTasks : tasks)?.filter(
         (t) => t?.done || t?.status === "done"
       );
+
     const totalDone = completed?.length || 0;
+
     const dates = new Set(
       completed
         .map((t) =>
@@ -48,8 +52,10 @@ export default function Achievements() {
         )
         .filter(Boolean)
     );
+
     return { totalDone, streak: computeStreak(dates) };
   }, [tasks, pastTasks]);
+
   const [remoteStats, setRemoteStats] = useState(null);
   const [loadingStats, setLoadingStats] = useState(false);
   const [statsError, setStatsError] = useState(null);
@@ -72,10 +78,31 @@ export default function Achievements() {
     fetchAchievements();
   }, [tasks, pastTasks]);
 
-  // 🔹 Use backend stats if available, otherwise local computed
-  const data = remoteStats || localData;
-  const totalDone = data?.totalDone || 0;
-  const currentStreak = data?.streak?.current || 0;
+  // 🔹 Merge backend stats with local computed data
+  // IMPORTANT: we never let server stats "reduce" the numbers the user already sees.
+  const mergedData = useMemo(() => {
+    if (!remoteStats) return localData;
+
+    const localTotal = localData?.totalDone ?? 0;
+    const remoteTotal = remoteStats?.totalDone ?? 0;
+
+    const localCurrent = localData?.streak?.current ?? 0;
+    const remoteCurrent = remoteStats?.streak?.current ?? 0;
+
+    const localBest = localData?.streak?.best ?? 0;
+    const remoteBest = remoteStats?.streak?.best ?? 0;
+
+    return {
+      totalDone: Math.max(localTotal, remoteTotal),
+      streak: {
+        current: Math.max(localCurrent, remoteCurrent),
+        best: Math.max(localBest, remoteBest),
+      },
+    };
+  }, [localData, remoteStats]);
+
+  const totalDone = mergedData.totalDone || 0;
+  const currentStreak = mergedData.streak?.current || 0;
 
   const badges = [
     { id: "done10", icon: "🏅", title: "10 Tasks", goal: 10, value: totalDone },
